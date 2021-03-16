@@ -147,18 +147,18 @@ export class SelectiveCartService {
       });
   }
 
-  removeEntry(entry: OrderEntry): void {
+  removeEntry(entry: OrderEntry, cartCode?: string): void {
     this.multiCartService.removeEntry(
       this.userId,
-      this.cartId,
+      cartCode ?? this.cartId,
       entry.entryNumber
     );
   }
 
-  updateEntry(entryNumber: number, quantity: number): void {
+  updateEntry(entryNumber: number, quantity: number, cartCode?: string): void {
     this.multiCartService.updateEntry(
       this.userId,
-      this.cartId,
+      cartCode ?? this.cartId,
       entryNumber,
       quantity
     );

@@ -36,6 +36,8 @@ export interface Item {
 export interface CartItemComponentOptions {
   isSaveForLater?: boolean;
   optionalBtn?: any;
+  cartCode?: string;
+  isSavedCart?: boolean;
 }
 
 @Component({

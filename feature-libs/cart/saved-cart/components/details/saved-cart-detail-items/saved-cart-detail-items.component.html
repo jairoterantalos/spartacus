@@ -8,7 +8,8 @@
         [items]="cart.entries"
         [cartIsLoading]="!(cartLoaded$ | async)"
         [options]="{
-          isSaveForLater: false
+          isSavedCart: true,
+          cartCode: cart?.code
         }"
       ></cx-cart-item-list>
     </div>

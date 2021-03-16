@@ -25,6 +25,8 @@ export class CartItemListComponent {
   @Input() options: CartItemComponentOptions = {
     isSaveForLater: false,
     optionalBtn: null,
+    cartCode: undefined,
+    isSavedCart: false,
   };
 
   private _items: OrderEntry[] = [];
@@ -117,8 +119,11 @@ export class CartItemListComponent {
   }
 
   removeEntry(item: OrderEntry): void {
-    if (this.selectiveCartService && this.options.isSaveForLater) {
-      this.selectiveCartService.removeEntry(item);
+    if (
+      (this.selectiveCartService && this.options.isSaveForLater) ||
+      this.options.isSavedCart
+    ) {
+      this.selectiveCartService.removeEntry(item, this.options?.cartCode);
     } else {
       this.activeCartService.removeEntry(item);
     }
@@ -130,10 +135,14 @@ export class CartItemListComponent {
       // eslint-disable-next-line import/no-deprecated
       startWith(null),
       map((value) => {
-        if (value && this.selectiveCartService && this.options.isSaveForLater) {
+        if (
+          (value && this.selectiveCartService && this.options.isSaveForLater) ||
+          (value && this.options.isSavedCart)
+        ) {
           this.selectiveCartService.updateEntry(
             value.entryNumber,
-            value.quantity
+            value.quantity,
+            this.options?.cartCode
           );
         } else if (value) {
           this.activeCartService.updateEntry(value.entryNumber, value.quantity);
