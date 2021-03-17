@@ -16,9 +16,9 @@
           </th>
           <th scope="col">{{ 'savedCartList.cartId' | cxTranslate }}</th>
           <th scope="col">{{ 'savedCartList.dateSaved' | cxTranslate }}</th>
-          <th scope="col">
+          <!-- <th scope="col">
             {{ 'savedCartList.cartDescription' | cxTranslate }}
-          </th>
+          </th> -->
           <th scope="col">
             {{ 'savedCartList.quantity' | cxTranslate }}
           </th>
@@ -78,7 +78,7 @@
                 >{{ savedCart?.saveTime | cxDate: 'longDate' }}</a
               >
             </td>
-            <td class="cx-saved-cart-list-cart-description">
+            <!-- <td class="cx-saved-cart-list-cart-description">
               <div class="d-md-none cx-saved-cart-list-label">
                 {{ 'savedCartList.cartDescription' | cxTranslate }}
               </div>
@@ -93,7 +93,7 @@
               >
                 {{ savedCart?.description }}
               </a>
-            </td>
+            </td> -->
 
             <td class="cx-saved-cart-list-quantity">
               <div class="d-md-none cx-saved-cart-list-label">
